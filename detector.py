@@ -25,16 +25,40 @@ def click(coords):
 
 def Movimento(x, y):
     mouse.position = (x, y+200)
-
+    sleep(1)
+    x = 0
+    while x < 200:
+        mouse.scroll(0, -1)
+        sleep(0.1)
+        x+=2
+    
+def Works():
+     while 1:
+        if pyautogui.locateOnScreen('work.png', region = (0,0 ,width,height), grayscale=True, confidence=0.8) != None:
+            print("consigo ver")
+            coords = pyautogui.locateCenterOnScreen('work.png', region = (0,0 ,width,height), grayscale=True, confidence=0.8)
+            x, y = coords
+            mouse.position = (x, y)
+            coords = x, y+300
+            x = 0
+            while x < 10:
+                click(coords)
+                print("click")
+                x += 1
+            sleep(2)
+            print("todos trabalhando")
+        else:
+            print("nao consigo ver")
+            sleep(0.5)
 def Char():
     while 1:
-        sleep(1)
         if pyautogui.locateOnScreen('Character.png', region = (0,0 ,width,height), grayscale=True, confidence=0.8) != None:
             print("consigo ver")
             coords = pyautogui.locateCenterOnScreen('Character.png', region = (0,0 ,width,height), grayscale=True, confidence=0.8)
             x, y = coords
             Movimento(x, y)
             sleep(2)
+            Works()
         else:
             print("nao consigo ver")
             sleep(0.5)
@@ -63,7 +87,7 @@ def Assinar():
             print("nao consigo ver")
             sleep(0.5)
 
-Char()
+Works()
 while keyboard.is_pressed('q') == False:
     if pyautogui.locateOnScreen('Connect.png', region = (0,0 ,width,height), grayscale=True, confidence=0.8) != None:
         print("consigo ver")
