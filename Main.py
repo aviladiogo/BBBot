@@ -5,7 +5,9 @@ from tkinter.ttk import*
 import keyboard
 from pynput.mouse import Button, Controller
 
-
+#tempo pra resetar estamina
+#quantos herois
+#
 mouse = Controller()
 root = Tk()
 height = root.winfo_screenheight() 
@@ -118,7 +120,7 @@ def Assinar():
             print("nao consigo ver")
             sleep(0.5)
 
-Close()
+#Close()
 while keyboard.is_pressed('q') == False:
     if pyautogui.locateOnScreen('Connect.png', region = (0,0 ,width,height), grayscale=True, confidence=0.8) != None:
         print("consigo ver")
